@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Simple Write - Kelou.fr</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <style>
+    body, html {
+        background-color: rgb(0, 130, 200);
+        width: 99%;
+        height: 90%;
+        margin: 0;
+        padding: 0;
+    }
+
+    textarea {
+        border: none;
+        overflow: auto;
+        outline: none;
+
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+
+    textarea {
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-top: 100px;
+        width: 49%;
+        min-height: 60%;
+        max-height: 500%;
+        background-color: rgb(0, 130, 200);
+                        /* JAUNE/ORANGE : 230, 140, 70 */
+                        /* VERT : 82,120,90 */
+                        /* BLEU : 0, 130, 200 */
+        color: white;
+        line-height: 30px;
+        font-size: 20px;
+        font-family: 'Inconsolata', sans-serif;
+        font-weight: 400 !important;
+
+        resize: none;
+
+        padding: 25px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    textarea:focus, input:focus{
+        outline: 0;
+    }
+
+    h1 {
+        text-align: center;
+        font-family: 'Comfortaa', cursive;
+        color:  darkslateblue;
+    }
+
+    h1 > i {
+        font-size: 20px;
+    }
+    
+    </style>
+    <h1>Simple Text Editor <i>by Kelou.fr</i></h1>
+    <textarea class="autoExpand" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">Ceci est un exemple de texte dans le textarea</textarea>
+
+
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+        
+        <script
+        src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+
+        <script>
+                var autoExpand = function (field) {
+
+                // Reset field height
+                field.style.height = 'inherit';
+
+                // Get the computed styles for the element
+                var computed = window.getComputedStyle(field);
+
+                // Calculate the height
+                var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+                            + parseInt(computed.getPropertyValue('padding-top'), 10)
+                            + field.scrollHeight
+                            + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+                            + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+
+                field.style.height = height + 'px';
+
+                };
+
+                document.addEventListener('input', function (event) {
+                if (event.target.tagName.toLowerCase() !== 'textarea') return;
+                autoExpand(event.target);
+                }, false);
+       </script>
+
+        </body>
+</html>
