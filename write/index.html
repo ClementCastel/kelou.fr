@@ -4,75 +4,42 @@
     <meta charset="utf-8">
     <title>Simple Write - Kelou.fr</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet" />
+    <link href="nav-style.css" rel="stylesheet" />
 </head>
 <body>
-    <style>
-    body, html {
-        background-color: rgb(0, 130, 200);
-        width: 99%;
-        height: 90%;
-        margin: 0;
-        padding: 0;
-    }
 
-    textarea {
-        border: none;
-        overflow: auto;
-        outline: none;
+    <div class="container">
+    <div id="toolbar" class="clearfix" style="width:70%">
+        <div class="toolbar-icon"><i class="fab fa-dev green-dark"></i></div>
+        <div class="toolbar-title"><h1>Simple Text Editor<i> by Kelou.fr</i></h1></div>
 
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-    }
+        <div class="dropdown" style="margin-left:auto; margin-right:50px;">
+        <button class="dropdown-button arrow-down"><i class="fas fa-bolt yellow"></i> Actions</button>
+        <ul class="dropdown-content">
+            <li onclick="download();"><a><i class="fas fa-edit blue"></i>Download (.txt)</a></li>
+            <li onclick="color1();"><a><i class="fas fa-trash-alt red"></i>Color: 1</a></li>
+            <li onclick="color2();"><a><i class="fas fa-share orange"></i>Color: 2</a></li>
+            <li onclick="color3();"><a><i class="fas fa-paper-plane grey"></i>Color: 3</a></li>
+            <li onclick="newD();"><a><i class="fas fa-paper-plane grey"></i>New Document</a></li>
+        </ul>
+        </div>
+    </div>
+    </div>
 
-    textarea {
-        margin-left: 25%;
-        margin-right: 25%;
-        margin-top: 100px;
-        width: 49%;
-        min-height: 60%;
-        max-height: 500%;
-        background-color: rgb(0, 130, 200);
-                        /* JAUNE/ORANGE : 230, 140, 70 */
-                        /* VERT : 82,120,90 */
-                        /* BLEU : 0, 130, 200 */
-        color: white;
-        line-height: 30px;
-        font-size: 20px;
-        font-weight: 400 !important;
 
-        resize: none;
-
-        padding: 25px;
-        padding-top: 25px;
-        padding-bottom: 25px;
-    }
-
-    textarea:focus, input:focus{
-        outline: 0;
-    }
-
-    h1 {
-        text-align: center;
-        font-family: 'Inconsolata', cursive;
-        color:  darkslateblue;
-    }
-
-    h1 > i {
-        font-size: 20px;
-    }
+    <textarea id="tarea"
+              style="height: 100px;" 
+              autocomplete="off" 
+              autocorrect="off" 
+              autocapitalize="off" 
+              spellcheck="false" 
+              class="autoExpand" 
+              onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">Ceci est un exemple de texte dans le textarea</textarea>
     
-    </style>
-    <h1>Simple Text Editor <i>by Kelou.fr</i></h1>
-    <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="autoExpand" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">Ceci est un exemple de texte dans le textarea</textarea>
-
 
         <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
         
-        <script
-        src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-        crossorigin="anonymous"></script>
 
         <script>
                 var autoExpand = function (field) {
@@ -84,21 +51,35 @@
                 var computed = window.getComputedStyle(field);
 
                 // Calculate the height
-                var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-                            + parseInt(computed.getPropertyValue('padding-top'), 10)
-                            + field.scrollHeight
-                            + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-                            + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-
+                var height = field.scrollHeight;
                 field.style.height = height + 'px';
-
                 };
 
                 document.addEventListener('input', function (event) {
                 if (event.target.tagName.toLowerCase() !== 'textarea') return;
                 autoExpand(event.target);
                 }, false);
-       </script>
+        </script>
+        <script src="index.js"></script>
+        <script>
+        function download () {
+        }
 
+        function color1 () {
+            document.body.style.backgroundColor = '#e68c46';
+        }
+
+        function color2 () {
+            document.body.style.backgroundColor = '#52785a';
+        }
+
+        function color3 () {
+            document.body.style.backgroundColor = '#0082c8';
+        }
+
+        function newD () {
+            console.log(" - new document");
+        }
+        </script>
         </body>
 </html>
