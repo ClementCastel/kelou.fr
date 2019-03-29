@@ -1,6 +1,5 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  color: #555555;
 }
 * {
   margin: 0;
@@ -13,7 +12,6 @@ body {
   justify-content: center;
 }
 #toolbar {
-  background-color:#DB3B48;
   padding: 5px;
   box-shadow: 0 0 15px 0px rgba(33,33,33,.2);
   margin: 40px auto 0;
@@ -46,8 +44,6 @@ ul li {
 }
 .dropdown-action,
 .dropdown-button {
-  background-color: #EFEBE6;
-  color: #2F3549;
   height: 36px;
   line-height: 36px;
   font-size: 16px;
@@ -103,7 +99,6 @@ ul li {
   display: none;
   position: absolute;
   top: 37px;
-  background-color: #ffffff;
   border: 1px solid #e4e4e4;
   min-width: 150px;
   box-shadow: 0 10px 20px rgba(177,191,198,0.19), 0 5px 10px rgba(177,191,198,0.23);

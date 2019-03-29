@@ -4,7 +4,6 @@
   }
 
 body, html {
-        background-color: #EFEBE6;
         width: 99%;
         height: 90%;
     }
@@ -25,11 +24,6 @@ body, html {
         /*margin-top: 100px;*/
         width: 49%;
         max-height: 1000%;
-        background-color: #EFEBE6;
-                        /* JAUNE/ORANGE : 230, 140, 70 */
-                        /* VERT : 82,120,90 */
-                        /* BLEU : 0, 130, 200 */
-        color: #1D1D20;
         line-height: 30px;
         font-size: 20px;
         font-weight: 400 !important;
@@ -48,7 +42,6 @@ body, html {
     h1 {
         text-align: center;
         font-family: 'Inconsolata', cursive;
-        color:  #2F3549;
     }
 
     h1 > i {
