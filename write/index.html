@@ -12,16 +12,17 @@
     <div class="container">
     <div id="toolbar" class="clearfix" style="width:70%">
         <div class="toolbar-icon"><i class="fab fa-dev green-dark"></i></div>
-        <div class="toolbar-title"><h1>Simple Text Editor<i> by Kelou.fr</i></h1></div>
+        <div class="toolbar-title"><h1 id="hu" style="color: black;">Simple Text Editor<i> by Kelou.fr</i></h1></div>
 
         <div class="dropdown" style="margin-left:auto; margin-right:50px;">
-        <button class="dropdown-button arrow-down"><i class="fas fa-bolt yellow"></i> Actions</button>
+        <button id="btnActions" class="dropdown-button arrow-down"><i class="fas fa-bolt yellow"></i> Actions</button>
         <ul class="dropdown-content">
-            <li onclick="download();"><a><i class="fas fa-edit blue"></i>Download (.txt)</a></li>
-            <li onclick="color1();"><a><i class="fas fa-trash-alt red"></i>Color: 1</a></li>
-            <li onclick="color2();"><a><i class="fas fa-share orange"></i>Color: 2</a></li>
-            <li onclick="color3();"><a><i class="fas fa-paper-plane grey"></i>Color: 3</a></li>
-            <li onclick="newD();"><a><i class="fas fa-paper-plane grey"></i>New Document</a></li>
+            <li id="ddc" onclick="download();"><a><i class="fas fa-edit blue"></i>Download (.txt)</a></li>
+            <li id="ddc" onclick="color1();"><a><i class="fas fa-trash-alt red"></i>Color: 1</a></li>
+            <li id="ddc" onclick="color2();"><a><i class="fas fa-share orange"></i>Color: 2</a></li>
+            <li id="ddc" onclick="color3();"><a><i class="fas fa-paper-plane grey"></i>Color: 3</a></li>
+            <li id="ddc" onclick="color4();"><a><i class="fas fa-paper-plane grey"></i>Color: 4</a></li>
+            <li id="ddc" onclick="newD();"><a><i class="fas fa-paper-plane grey"></i>New Document</a></li>
         </ul>
         </div>
     </div>
@@ -62,19 +63,75 @@
         </script>
         <script src="index.js"></script>
         <script>
+            color1(); //first color when loading app
+
+
         function download () {
         }
 
         function color1 () {
-            document.body.style.backgroundColor = '#e68c46';
+            /*
+                #EFEBE6 : beige
+                #2F3549 : noir
+                #DB3B48 : rouge
+                #FFFFFF : blanc
+            */
+
+            changeColor('#EFEBE6', '#2F3549', '#DB3B48', '#FFFFFF');
         }
 
         function color2 () {
-            document.body.style.backgroundColor = '#52785a';
+            /*
+                #243E5C : indigo foncé
+                #D5E0EB : blanc azure
+                #6C6E70 : métal
+                #FFFFFF : blanc
+            */
+            changeColor('#002b38', '#99dbcf', '#001419', '#001f27');   
         }
 
         function color3 () {
-            document.body.style.backgroundColor = '#0082c8';
+            /*
+                #FFFFFF : blanc
+                #312F2F : charbon
+                #FF6600 : orange
+                #FFFFFF : blanc
+            */
+            changeColor('#bfeaf9', '#522d1d', '#e6f5fb', '#FFFFFF');
+        }
+
+        function color4 () {
+            /*
+                #243E5C : indigo foncé
+                #D5E0EB : blanc azure
+                #6C6E70 : métal
+                #FFFFFF : blanc
+            */
+            changeColor('#521714', '#d5a54e', '#1e4029', '#2c5a3b');
+        }
+
+        /**
+          * color1 : couleur fond de page / tarea
+          * color2 : couleur texte / titre
+          * color3 : bg toolbar
+          * color4 : bg liste dropdown
+          */
+        function changeColor (color1, color2, color3, color4) {
+
+            document.body.style.backgroundColor = color1;
+            document.getElementById("toolbar").style.color = color2;
+            document.getElementById("toolbar").style.backgroundColor = color3;
+            document.getElementById("hu").style.color = color2;
+            document.getElementById("tarea").style.color = color2;
+            document.getElementById("tarea").style.backgroundColor = color1;
+            document.getElementById("btnActions").style.backgroundColor = color1;
+            document.getElementById("btnActions").style.color = color2;
+
+            var ddc = document.getElementsByTagName("li");
+            for (var i = 0; i < ddc.length; i++) {
+                ddc[i].style.color = color2;
+                ddc[i].style.backgroundColor = color4;
+            }
         }
 
         function newD () {
