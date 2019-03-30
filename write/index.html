@@ -22,7 +22,7 @@
             <li id="ddc" onclick="color2();"><a><i class="fas fa-share orange"></i>Color: 2</a></li>
             <li id="ddc" onclick="color3();"><a><i class="fas fa-paper-plane grey"></i>Color: 3</a></li>
             <li id="ddc" onclick="color4();"><a><i class="fas fa-paper-plane grey"></i>Color: 4</a></li>
-            <li id="ddc" onclick="newD();"><a><i class="fas fa-paper-plane grey"></i>New Document</a></li>
+            <li id="ddc" onclick="newD();"><a href=""><i class="fas fa-paper-plane grey"></i>New Document</a></li>
         </ul>
         </div>
     </div>
@@ -38,10 +38,11 @@
               class="autoExpand" 
               onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">Ceci est un exemple de texte dans le textarea</textarea>
     
+       
+           
 
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
         
-
         <script>
                 var autoExpand = function (field) {
 
@@ -66,7 +67,26 @@
             color1(); //first color when loading app
 
 
-        function download () {
+        function download() {
+            var txt = document.getElementById("tarea").value;
+            var d = Date.now();
+            var fileName = prompt("Please write the name of your txt file below :", d);
+            if (fileName != null && fileName != "") {
+                downloadFct(fileName, txt);
+            }
+        }
+
+        function downloadFct(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
         }
 
         function color1 () {
