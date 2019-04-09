@@ -12,7 +12,7 @@
     <div class="container">
     <div id="toolbar" class="clearfix" style="width:70%">
         <div class="toolbar-icon"><i class="fab fa-dev green-dark"></i></div>
-        <div class="toolbar-title"><h1 id="hu" style="color: black;">Simple Text Editor<i> by Kelou.fr</i></h1></div>
+        <div class="toolbar-title"><h1 id="hu" style="color: black;">Simple Text Editor<i> by Kelou.fr</i><i id="saved"></i></h1></div>
 
         <div class="dropdown" style="margin-left:auto; margin-right:50px;">
         <button id="btnActions" class="dropdown-button arrow-down"><i class="fas fa-bolt yellow"></i> Actions</button>
@@ -62,10 +62,47 @@
                 autoExpand(event.target);
                 }, false);
         </script>
-        <script src="index.js"></script>
+        <script src="script.js"></script>
         <script>
-            color1(); //first color when loading app
+        color1(); //first color when loading app
 
+        if (document.cookie.length > 8) {
+            document.getElementById('tarea').value = document.cookie.split("saveText=")[1];
+        }
+
+        document.onkeydown = function (e) {
+            if (e.ctrlKey && e.keyCode ==83) {
+                e.preventDefault();
+                saveText();
+                saveCookie();
+            }
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function saveCookie() {
+            document.getElementById('saved').innerHTML = " - sauvegardé";
+            await sleep(800);
+            document.getElementById('saved').innerHTML = "";
+        }
+
+        function setCookie(name,value,days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }    
+
+        function saveText () {
+            var textValue = document.getElementById('tarea').value;
+            setCookie("saveText", textValue, 14);
+            console.log(document.cookie);
+        }
 
         function download() {
             var txt = document.getElementById("tarea").value;
